@@ -38,9 +38,13 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-
 while (True):
     os.system('clear')
+    print("\033[0;33m")
+    print("\n\t\t\t\t\t***************************************************************************\n")
+    print("\n\t\t\t\t\t\t\t\t   WELCOME TO COEP \n\n")
+    print("\t\t\t\t\t****************************************************************************\n")
+    print("\033[0m")
     print("\n\t\t\t\t\t\t\t\t"+bcolors.WARNING+"Enter 1 to Register\n\t\t\t\t\t\t\t\tEnter 2 to Scan QR code\n\t\t\t\t\t\t\t\tEnter 3 to get Details\n\t\t\t\t\t\t\t\tEnter 4 to EXIT")
     i=int(input("\n\t\t\t\t\t\t\t\tEnter --->"))
     if(i==1):
@@ -48,7 +52,13 @@ while (True):
         generate.register(students)
     elif(i==2):
         os.system('clear')
-        scan.decodeQR()
+        if(scan.decodeQR(students)==0):
+            win=Tk()
+            win.title("Alert")
+            win.geometry("600x200+50+50")
+            Label(win, text= "Process Aborted", font=('Mistral 18 bold')).place(x=150,y=80)
+            win.bind('<Escape>', lambda e: win.destroy())
+        
     elif(i==3):
         os.system('clear')
         details.getDetails(students)

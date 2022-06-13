@@ -5,6 +5,7 @@ from csv import writer
 import os
 import image
 import cv2
+from tkinter import *
 from pyzbar.pyzbar import decode
 import csv
 import datetime
@@ -20,7 +21,7 @@ def outImage(MIS):
     cv2.destroyAllWindows()
 
 
-def decodeQR():
+def decodeQR(students):
     cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH,960)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT,720) 
@@ -37,7 +38,22 @@ def decodeQR():
 
         key=cv2.waitKey(1)
         if key==ord("q"):
-            break
+            cap.release()
+            cv2.destroyAllWindows()
+            # f = open('attendance.csv', "r+")
+            # lines = f.readlines()
+            # lines.pop()
+            # f = open('attendance.csv', "w+")
+            # f.writelines(lines)
+            return 0
+
+    if MIS not in students:
+        win=Tk()
+        win.geometry("600x200+50+50")
+        win.title("Alert")
+        Label(win, text= "Student not Registered", font=('Mistral 18 bold')).place(x=150,y=80)
+        win.bind('<Escape>', lambda e: win.destroy())
+        return 1  
 
     name=""
     with open("register.csv","r") as file:
@@ -61,3 +77,4 @@ def decodeQR():
     cap.release()
     cv2.destroyAllWindows()
     outImage(MIS)
+    return 1
