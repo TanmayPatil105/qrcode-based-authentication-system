@@ -13,6 +13,7 @@ import datetime
 import generate
 import scan
 import details
+import printcard
 
 
 ## TO APPEND ALL MIS IN students ARRAY
@@ -45,7 +46,7 @@ while (True):
     print("\n\t\t\t\t\t\t\t\t   WELCOME TO COEP \n\n")
     print("\t\t\t\t\t****************************************************************************\n")
     print("\033[0m")
-    print("\n\t\t\t\t\t\t\t\t"+bcolors.WARNING+"Enter 1 to Register\n\t\t\t\t\t\t\t\tEnter 2 to Scan QR code\n\t\t\t\t\t\t\t\tEnter 3 to get Details\n\t\t\t\t\t\t\t\tEnter 4 to EXIT")
+    print("\n\t\t\t\t\t\t\t\t"+bcolors.WARNING+"Enter 1 to Register\n\t\t\t\t\t\t\t\tEnter 2 to Scan QR code\n\t\t\t\t\t\t\t\tEnter 3 to get Details\n\t\t\t\t\t\t\t\tEnter 4 to print ID CARD\n\t\t\t\t\t\t\t\tEnter 5 to EXIT")
     i=int(input("\n\t\t\t\t\t\t\t\tEnter --->"))
     if(i==1):
         os.system('clear')
@@ -62,5 +63,9 @@ while (True):
     elif(i==3):
         os.system('clear')
         details.getDetails(students)
+    elif (i==4):
+        os.system('clear')
+        printcard.generate_card(students)
+        
     else :
         break

@@ -23,18 +23,18 @@ def getDetails(students):
     
     label=Tk()
     label.title("Details")
-    label.geometry("1000x800+50+50")  
+    label.geometry("600x400+50+50")  
 
-    label1=Label(label, text="Name : "+name, font=("Helvetica",30,"bold"))
+    label1=Label(label, text="Name : "+name, font=("Helvetica",20,"bold"))
     label1.pack( pady=10)
 
-    label1=Label(label, text="MIS : "+ MIS, font=("Helvetica",30,"bold"))
+    label1=Label(label, text="MIS : "+ MIS, font=("Helvetica",20,"bold"))
     label1.pack(pady=10)
 
-    label1=Label(label, text="Contact : "+ contact, font=("Helvetica",30,"bold"))
+    label1=Label(label, text="Contact : "+ contact, font=("Helvetica",20,"bold"))
     label1.pack(pady=10)
 
-    image = Image.open("images/"+MIS+".jpg")
+    image = Image.open(f"images/{MIS}.jpg").resize((300,240), Image.ANTIALIAS)
     photo = ImageTk.PhotoImage(image)
     name = Label(image=photo)
     name.pack()
