@@ -1,5 +1,6 @@
 import pandas as pd
 from tkinter import *
+from tkinter import simpledialog
 from PIL import Image
 from PIL import ImageTk
 from PIL import ImageDraw
@@ -8,11 +9,13 @@ import csv
 
 
 
-font = ImageFont.truetype("fonts/B20Sans.ttf", 25, encoding="unic")
+font = ImageFont.truetype("fonts/B20Sans.ttf", 35, encoding="unic")
 
 def generate_card(students):
     
-    MIS=input("\n\t\t\t\t\t\t\t\tEnter Your MIS : \033[92m")
+    ROOT = Tk()
+    ROOT.withdraw()
+    MIS = simpledialog.askstring(title="Test",prompt="Enter MIS")
     if MIS not in students:
         win=Tk()
         win.geometry("600x200+50+50")
@@ -31,8 +34,11 @@ def generate_card(students):
                 break
 
     template = Image.open("templates/template.png")
+
     pic = Image.open(f"codes/{MIS}.png").resize((165, 190), Image.ANTIALIAS)
+    
     template.paste(pic, (25, 75, 190, 265))
+
     draw = ImageDraw.Draw(template)
     draw.text((315, 80), str(MIS),font=font ,fill='brown')
     draw.text((315, 125), name, font=font, fill='brown')

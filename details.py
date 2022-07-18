@@ -1,10 +1,14 @@
 from tkinter import *
+from tkinter import simpledialog
 from PIL import Image ,ImageTk
 import csv
 
 def getDetails(students):
 
-    MIS=input("\n\t\t\t\t\t\t\t\tEnter Your MIS : \033[92m")
+    ROOT = Tk()
+    ROOT.withdraw()
+    MIS = simpledialog.askstring(title="Test",prompt="Enter MIS")
+    
     if MIS not in students:
         win=Tk()
         win.geometry("600x200+50+50")
@@ -23,7 +27,7 @@ def getDetails(students):
     
     label=Tk()
     label.title("Details")
-    label.geometry("600x400+50+50")  
+    label.geometry("900x600+50+50")  
 
     label1=Label(label, text="Name : "+name, font=("Helvetica",20,"bold"))
     label1.pack( pady=10)
@@ -41,3 +45,4 @@ def getDetails(students):
 
     label.bind('<Escape>', lambda e: label.destroy())
     label.mainloop()
+    return 

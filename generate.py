@@ -3,6 +3,7 @@ from logging import root
 import qrcode
 from csv import writer
 from tkinter import *
+from tkinter import simpledialog
 import os
 from PIL import Image ,ImageTk
 import image
@@ -61,9 +62,11 @@ def register(students):
         box_size =7,
         border=7)
 
-    print(bcolors.OKBLUE)
-    MIS=input("\t\t\t\t\t\t\t\tEnter Your MIS : \033[92m")
-    print(bcolors.OKWHITE)
+    ROOT = Tk()
+
+    ROOT.withdraw()
+    MIS = simpledialog.askstring(title="Test",prompt="Enter MIS")
+
 
     if(MIS in students):
         win=Tk()
@@ -73,24 +76,29 @@ def register(students):
         win.bind('<Escape>', lambda e: win.destroy())
         return
 
-    print(bcolors.OKBLUE)
-    name=input("\t\t\t\t\t\t\t\tEnter Your name : \033[92m")
-    print(bcolors.OKWHITE)
+    ROOT = Tk()
+    ROOT.withdraw()
+    name = simpledialog.askstring(title="Test",prompt="Enter your Name")
 
-    print(bcolors.OKBLUE)
-    contact=int(input("\t\t\t\t\t\t\t\tEnter Your Contact No. : \033[92m"))
-    print(bcolors.OKBLUE)
+
+
+    ROOT = Tk()
+    ROOT.withdraw()
+    contact = simpledialog.askstring(title="Test",prompt="Enter Contact Number")
+
 
     while len(str(contact))!=10 :
-        contact=int(input("\t\t\t\t\t\t\t\tRe-Enter Your Contact No. : \033[92m",bcolors.OKWHITE))
+        ROOT = Tk()
+        ROOT.withdraw()
+        contact = simpledialog.askstring(title="Test",prompt="Enter Contact Number")
 
-    print(bcolors.OKBLUE)
-    DOB=input("\t\t\t\t\t\t\t\tEnter Your Date of Birth : \033[92m")
-    print(bcolors.OKBLUE)
+    ROOT = Tk()
+    ROOT.withdraw()
+    DOB = simpledialog.askstring(title="Test",prompt="Enter Date of Birth")
 
-    print(bcolors.OKBLUE)
-    Address=input("\t\t\t\t\t\t\t\tEnter Your Address : \033[92m")
-    print(bcolors.OKBLUE)
+    ROOT = Tk()
+    ROOT.withdraw()
+    Address = simpledialog.askstring(title="Test",prompt="Enter Address")
 
     i=takepicture(MIS,name)
     if(i==0):

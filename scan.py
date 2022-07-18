@@ -77,4 +77,11 @@ def decodeQR(students):
     cap.release()
     cv2.destroyAllWindows()
     outImage(MIS)
+
+    win=Tk()
+    win.geometry("700x200+50+50")
+    win.title("Alert")
+    Label(win, text= "Attendance Recorded Succesfully", font=('Mistral 18 bold')).place(x=150,y=80)
+    win.bind('<Escape>', lambda e: win.destroy())
+
     return 1
